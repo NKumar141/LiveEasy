@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/phone.dart';
 import '../src/Screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'main2.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class app4 extends StatelessWidget {
   @override
@@ -49,7 +51,7 @@ class _Lang3State extends State<Lang3> {
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => app2()));
+                      MaterialPageRoute(builder: (context) => app3()));
                 },
               ),
             ),
@@ -65,7 +67,7 @@ class _Lang3State extends State<Lang3> {
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
                   child: Text(
-                    "Please enter your mobile number",
+                    "Verify Phone",
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontSize: 20,
@@ -81,14 +83,63 @@ class _Lang3State extends State<Lang3> {
                   width: 185,
                   alignment: Alignment.center,
                   child: Text(
-                    "You’ll receive a 4 digit code to verify next.",
+                    "Code is sent to 8094508485",
                     style: TextStyle(color: Colors.grey),
                     textAlign: TextAlign.center,
                   ),
                 ),
               ),
+              OtpTextField(
+                numberOfFields: 6,
+                borderColor: Color(0xFF512DA8),
+                fillColor: Color(0xFF93D2F3),
+
+                //set to true to show as box or false to show as dash
+                showFieldAsBox: true,
+                //runs when a code is typed in
+                onCodeChanged: (String code) {
+                  //handle validation or checks here
+                },
+                //runs when every textfield is filled
+                onSubmit: (String verificationCode) {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("Verification Code"),
+                          content: Text('Code entered is $verificationCode'),
+                        );
+                      });
+                }, // end onSubmit
+              ),
               SizedBox(
                 height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                child: Container(
+                    height: 42,
+                    width: 250,
+                    alignment: Alignment.center,
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Didn’t receive the code?',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: ' Request Again',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
               ),
               SizedBox(
                 height: 48,
