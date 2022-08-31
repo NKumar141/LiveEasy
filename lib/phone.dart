@@ -3,6 +3,7 @@ import 'package:myapp/otp.dart';
 import '../src/Screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'main2.dart';
+import 'profile.dart';
 
 class app3 extends StatelessWidget {
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/phone.dart';
+import 'package:myapp/profile.dart';
 import '../src/Screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'main2.dart';
@@ -145,7 +146,8 @@ class _Lang3State extends State<Lang3> {
                 height: 48,
                 width: 320,
                 child: ElevatedButton(
-                    child: Text("CONTINUE", style: TextStyle(fontSize: 20)),
+                    child: Text("VERIFY AND CONTINUE",
+                        style: TextStyle(fontSize: 20)),
                     style: ButtonStyle(
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
@@ -159,8 +161,7 @@ class _Lang3State extends State<Lang3> {
                                         BorderSide(color: Color(0xff465998))))),
                     onPressed: () => {
                           Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => Loginscreen()))
+                              MaterialPageRoute(builder: (context) => app5()))
                         }),
               ),
               Container(),
